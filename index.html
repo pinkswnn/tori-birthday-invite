@@ -170,5 +170,245 @@
     }
 
     /* photo */
-    .hero-photo
-  
+    .hero-photo-wrap {
+      flex: 0.9;
+      display: flex;
+      justify-content: center;
+    }
+
+    .photo-ring {
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      padding: 4px;
+      background:
+        radial-gradient(circle at 20% 0%, #ffbaf3 0, transparent 55%),
+        radial-gradient(circle at 80% 100%, #32e0ff 0, transparent 55%);
+      box-shadow: 0 0 26px rgba(50, 224, 255, 0.7);
+    }
+
+    .photo-ring-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(5, 8, 33, 0.8);
+    }
+
+    .photo-ring-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* info + CTA section */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    @media (min-width: 620px) {
+      .info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .info-card {
+      background: rgba(7, 26, 70, 0.95);
+      border-radius: 16px;
+      padding: 10px 12px;
+      border: 1px solid rgba(129, 212, 255, 0.45);
+      font-size: 0.9rem;
+    }
+
+    .info-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(214, 229, 255, 0.8);
+      margin-bottom: 2px;
+    }
+
+    .info-value {
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .dress-note {
+      margin-top: 4px;
+      font-size: 0.9rem;
+      color: #f4e2ff;
+    }
+    .dress-note strong {
+      color: #32e0ff;
+    }
+
+    .mission-line {
+      margin-top: 12px;
+      font-size: 0.9rem;
+      color: #dde5ff;
+    }
+    .mission-line em {
+      color: #ffbaf3;
+    }
+
+    /* CTA area */
+    .cta-block {
+      margin-top: 18px;
+      padding: 12px 12px 8px;
+      background: linear-gradient(120deg, rgba(255,186,243,0.16), rgba(50,224,255,0.12));
+      border-radius: 18px;
+      border: 1px dashed rgba(255, 186, 243, 0.6);
+      text-align: center;
+    }
+
+    .cta-title {
+      font-size: 0.85rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #ffbaf3;
+      margin-bottom: 6px;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 4px;
+      padding: 10px 22px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #050821;
+      background: linear-gradient(135deg, #32e0ff, #ffbaf3);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .cta-button span.icon {
+      font-size: 1.1rem;
+    }
+
+    .cta-caption {
+      margin-top: 6px;
+      font-size: 0.8rem;
+      color: #f2e9ff;
+    }
+
+    .qr-note {
+      margin-top: 12px;
+      font-size: 0.82rem;
+      color: #d2e0ff;
+      text-align: center;
+    }
+    .qr-note em {
+      color: #ffbaf3;
+    }
+
+    .footer-line {
+      margin-top: 14px;
+      font-size: 0.7rem;
+      text-align: center;
+      color: rgba(210, 225, 255, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="inner">
+      <!-- top row -->
+      <div class="tag-row">
+        <div class="badge">
+          <span class="badge-dot"></span>
+          TOP-SECRET MALL MISSION
+        </div>
+        <div class="tiny-tag">Scavenger Hunt • Snacks • Selfies ✨</div>
+      </div>
+
+      <!-- hero -->
+      <section class="hero">
+        <div class="hero-text">
+          <div class="eyebrow">you’re invited to</div>
+          <h1>
+            <span class="script">[HER NAME]’s</span>
+            Mall Mission <span class="blue">Blue Edition</span>
+          </h1>
+          <p class="hero-sub">
+            You’ve been selected for a <strong>top-secret birthday mission 💙</strong><br />
+            Meet us at <strong>[MALL NAME]</strong> for snacks, selfies, and surprises.
+          </p>
+
+          <div class="pill">
+            <span>🕵🏽‍♀️</span> Agents only. Code name: <strong>Birthday Squad</strong>
+          </div>
+        </div>
+
+        <div class="hero-photo-wrap">
+          <div class="photo-ring">
+            <div class="photo-ring-inner">
+              <!-- her photo -->
+              <img src="your-photo.png" alt="Birthday Agent">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- info -->
+      <section class="info-grid">
+        <div class="info-card">
+          <div class="info-label">Mission Date</div>
+          <div class="info-value">[DAY, DATE]</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">Mission Time</div>
+          <div class="info-value">[START TIME] – [END TIME]</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">Rendezvous Point</div>
+          <div class="info-value">Meet at [STORE / FOOD COURT SPOT]</div>
+        </div>
+        <div class="info-card">
+          <div class="info-label">Extraction</div>
+          <div class="info-value">Pickup at [PICKUP TIME] at [PICKUP SPOT]</div>
+        </div>
+      </section>
+
+      <p class="dress-note">
+        <strong>Dress code:</strong> blue, white, or denim — cute but undercover. Add sparkles if you dare ✨
+      </p>
+
+      <p class="mission-line">
+        Expect <em>scavenger hunt challenges, glam photo ops, and surprise missions</em> led by Agent [HER NAME].
+      </p>
+
+      <!-- CTA / text link -->
+      <section class="cta-block">
+        <div class="cta-title">rsvp to hq</div>
+        <!-- click-to-text link -->
+        <a class="cta-button" href="sms:19452379271">
+          <span class="icon">📱</span>
+          Text HQ (Mom) to say “I’m in!”
+        </a>
+        <div class="cta-caption">
+          Or text <strong>“Mall Mission 💙”</strong> to <strong>(945) 237-9271</strong>.
+        </div>
+      </section>
+
+      <p class="qr-note">
+        Optional: add a QR code image below that links to your <em>Mission Rules</em> doc or group chat.
+        (In Canva or your editor, just drop it under this text.)
+      </p>
+
+      <p class="footer-line">
+        This page is classified. For birthday squad eyes only. 💙
+      </p>
+    </div>
+  </div>
+</body>
+</html>
