@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>The Mall Mission: Blue Edition Invitation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Helvetica, Arial, sans-serif;
+      background: linear-gradient(135deg, #0f6fdc, #76c5ff);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      color: #ffffff;
+    }
+
+    .invite-wrapper {
+      max-width: 480px;
+      width: 100%;
+      background: rgba(8, 23, 52, 0.9);
+      border-radius: 18px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      padding: 26px 22px 28px;
+      border: 1px solid rgba(156, 199, 255, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Decorative “mission” lines */
+    .invite-wrapper::before,
+    .invite-wrapper::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      opacity: 0.25;
+      pointer-events: none;
+    }
+
+    .invite-wrapper::before {
+      width: 260px;
+      height: 260px;
+      border: 1px dashed #76c5ff;
+      top: -130px;
+      right: -80px;
+    }
+
+    .invite-wrapper::after {
+      width: 220px;
+      height: 220px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      bottom: -140px;
+      left: -80px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(118, 197, 255, 0.9);
+      background: rgba(12, 63, 135, 0.85);
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #32e0ff;
+      box-shadow: 0 0 8px #32e0ff;
+    }
+
+    h1 {
+      font-size: 1.7rem;
+      line-height: 1.2;
+      margin-bottom: 4px;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    h1 span.accent {
+      color: #76c5ff;
+    }
+
+    .subtitle {
+      font-size: 0.92rem;
+      opacity: 0.85;
+      text-align: center;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px dashed rgba(156, 199, 255, 0.55);
+      margin: 14px 0 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      opacity: 0.8;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mission-text {
+      font-size: 0.94rem;
+      line-height: 1.45;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mission-text strong {
+      color: #9cc7ff;
+      font-weight: 600;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 16px;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .info-item {
+      background: rgba(19, 49, 102, 0.95);
+      border-radius: 10px;
+      padding: 10px 11px;
+      border: 1px solid rgba(118, 197, 255, 0.3);
+      font-size: 0.88rem;
+      line-height: 1.35;
+    }
+
+    .info-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      opacity: 0.7;
+      margin-bottom: 2px;
+    }
+
+    .info-value {
+      font-weight: 600;
+      color: #e3f2ff;
+    }
+
+    .dress-code {
+      margin-top: 8px;
+      margin-bottom: 14px;
+      font-size: 0.9rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dress-code strong {
+      color: #32e0ff;
+    }
+
+    .tagline {
+      font-size: 0.82rem;
+      font-style: italic;
+      opacity: 0.9;
+      margin-bottom: 12px;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+
+    .rsvp {
+      font-size: 0.9rem;
+      margin-top: 8px;
+      margin-bottom: 4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-note {
+      font-size: 0.7rem;
+      opacity: 0.7;
+      position: relative;
+      z-index: 1;
+    }
+
+    .emoji {
+      font-size: 1rem;
+      vertical-align: middle;
+    }
+
+    /* Responsive tweaks */
+    @media (min-width: 600px) {
+      .info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+      }
+      .invite-wrapper {
+        box-shadow: none;
+        margin: 0;
+        border-radius: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="invite-wrapper">
+    <div class="badge">
+      <span class="badge-dot"></span>
+      OPERATION: BIRTHDAY GLOW
+    </div>
+
+    <h1>
+      The Mall Mission: <span class="accent">Blue Edition</span>
+    </h1>
+
+    <p class="subtitle">
+      You’ve been selected for a <strong>Top-Secret Birthday Mission</strong>.
+    </p>
+
+    <hr class="divider" />
+
+    <p class="section-title">Mission Briefing</p>
+
+    <p class="mission-text">
+      Report to <strong>[MALL NAME]</strong> on
+      <strong>[DAY, DATE]</strong> at <strong>[START TIME]</strong> sharp.
+      <br /><br />
+      Your mission: shop, snack, take selfies, and celebrate Agent
+      <strong>[HER NAME]</strong>’s 13th birthday in style. There will be
+      photo ops, snack stops, and a surprise challenge along the way.
+    </p>
+
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="info-label">Rendezvous Point</div>
+        <div class="info-value">Meet at [MEETING SPOT / STORE NAME]</div>
+      </div>
+      <div class="info-item">
+        <div class="info-label">Extraction Time</div>
+        <div class="info-value">Pickup at [PICKUP TIME] at [PICKUP SPOT]</div>
+      </div>
+    </div>
+
+    <p class="dress-code">
+      <strong>Dress Code:</strong> Blue, white, or denim —
+      it’s part of the disguise. <span class="emoji">🕵️‍♀️💙</span>
+    </p>
+
+    <p class="tagline">
+      Secret agents. Snack breaks. Selfies allowed. <br />
+      <span>Complete the mission. Earn your glow.</span>
+    </p>
+
+    <p class="rsvp">
+      Confirm participation by sending a <span class="emoji">💙</span> to HQ
+      (aka Mom) at <strong>[PARENT PHONE / CONTACT]</strong>.
+    </p>
+
+    <p class="footer-note">
+      This mission is classified. Authorized birthday squad members only.
+    </p>
+  </div>
+</body>
+</html>
