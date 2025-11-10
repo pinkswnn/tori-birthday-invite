@@ -1,120 +1,353 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mall Mission: Blue Edition</title>
-<style>
-  body {
-    margin: 0;
-    font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background: linear-gradient(180deg, #b3e5ff, #e7f4ff);
-    color: #1c2d4a;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 16px;
-  }
+  <meta charset="UTF-8">
+  <title>Mall Mission: Blue Edition – Spy Invite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  .invite {
-    width: 100%;
-    max-width: 420px;
-    background: #ffffff;
-    border-radius: 24px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    overflow: hidden;
-  }
+  <!-- Optional Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
-  .header-photo {
-    width: 100%;
-    height: 230px;
-    object-fit: cover;
-  }
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  .content {
-    padding: 20px 22px 26px;
-  }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(50,224,255,0.20) 0, transparent 55%),
+        radial-gradient(circle at 90% 100%, rgba(0,212,255,0.20) 0, transparent 55%),
+        #020716;
+      color: #f5f7ff;
+    }
 
-  h1 {
-    font-size: 1.6rem;
-    text-align: center;
-    color: #0a57c9;
-    margin-bottom: 4px;
-  }
+    .invite-card {
+      width: 100%;
+      max-width: 420px;
+      background: radial-gradient(circle at top, #0b1b3a 0%, #030814 45%, #020410 100%);
+      border-radius: 24px;
+      padding: 18px 18px 22px;
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(50, 224, 255, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
 
-  .subtitle {
-    text-align: center;
-    font-size: 0.9rem;
-    color: #5a6d8b;
-    margin-bottom: 16px;
-  }
+    /* fingerprint / mapline vibe */
+    .invite-card::before,
+    .invite-card::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      opacity: 0.18;
+      pointer-events: none;
+    }
 
-  .info-box {
-    background: #eaf6ff;
-    border-left: 4px solid #4aa0ff;
-    border-radius: 8px;
-    padding: 10px 14px;
-    margin-bottom: 14px;
-    font-size: 0.92rem;
-  }
+    .invite-card::before {
+      width: 240px;
+      height: 240px;
+      border: 1px dashed rgba(50, 224, 255, 0.85);
+      top: -90px;
+      right: -40px;
+    }
 
-  .highlight {
-    color: #0a57c9;
-    font-weight: 600;
-  }
+    .invite-card::after {
+      width: 260px;
+      height: 260px;
+      border: 1px solid rgba(255,255,255,0.08);
+      bottom: -130px;
+      left: -60px;
+    }
 
-  .dresscode {
-    background: #f0f9ff;
-    border-radius: 8px;
-    padding: 10px 14px;
-    font-size: 0.9rem;
-    color: #0a57c9;
-    margin-bottom: 16px;
-    text-align: center;
-  }
+    .top-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
 
-  .footer {
-    text-align: center;
-    font-size: 0.85rem;
-    color: #607191;
-  }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(50, 224, 255, 0.9);
+      background: rgba(2, 14, 39, 0.9);
+      font-size: 0.68rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #cfe9ff;
+      flex-shrink: 0;
+    }
 
-  .emoji {
-    font-size: 1.1rem;
-  }
-</style>
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: #32e0ff;
+      box-shadow: 0 0 10px #32e0ff;
+    }
+
+    .photo-frame {
+      margin-left: auto;
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      border: 2px solid rgba(50, 224, 255, 0.9);
+      padding: 3px;
+      background: radial-gradient(circle at 30% 0%, #32e0ff 0, #020816 55%);
+      overflow: hidden;
+      box-shadow: 0 0 18px rgba(50, 224, 255, 0.6);
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    h1 {
+      font-size: 1.55rem;
+      line-height: 1.18;
+      text-align: left;
+      margin-top: 6px;
+      margin-bottom: 4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 span {
+      color: #32e0ff;
+    }
+
+    .subtitle {
+      font-size: 0.9rem;
+      color: #ccddff;
+      margin-bottom: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .subtitle strong {
+      color: #ffffff;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px dashed rgba(50, 224, 255, 0.55);
+      margin: 10px 0 16px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .mission-copy {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      position: relative;
+      z-index: 1;
+      color: #dde8ff;
+      margin-bottom: 14px;
+    }
+
+    .mission-copy strong {
+      color: #32e0ff;
+      font-weight: 600;
+    }
+
+    .details-grid {
+      display: grid;
+      gap: 10px;
+      position: relative;
+      z-index: 1;
+      margin-bottom: 14px;
+    }
+
+    .detail-box {
+      background: rgba(7, 24, 62, 0.95);
+      border-radius: 12px;
+      padding: 9px 11px;
+      border: 1px solid rgba(50, 224, 255, 0.4);
+      font-size: 0.86rem;
+      line-height: 1.4;
+    }
+
+    .detail-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(205, 223, 255, 0.8);
+      margin-bottom: 2px;
+    }
+
+    .detail-value {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .dresscode {
+      margin-top: 4px;
+      font-size: 0.88rem;
+      position: relative;
+      z-index: 1;
+      color: #cfe9ff;
+    }
+
+    .dresscode strong {
+      color: #32e0ff;
+    }
+
+    .bottom-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .qr-box {
+      flex-shrink: 0;
+      width: 80px;
+      height: 80px;
+      border-radius: 14px;
+      border: 1px solid rgba(50, 224, 255, 0.7);
+      background: radial-gradient(circle at 20% 0%, #32e0ff30, transparent 70%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .qr-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .qr-text {
+      font-size: 0.78rem;
+      color: #cfe9ff;
+      line-height: 1.5;
+    }
+
+    .qr-text strong {
+      color: #ffffff;
+    }
+
+    .rsvp {
+      font-size: 0.86rem;
+      margin-top: 10px;
+      position: relative;
+      z-index: 1;
+      color: #dbe7ff;
+    }
+
+    .footer-note {
+      font-size: 0.7rem;
+      color: rgba(193, 211, 255, 0.8);
+      margin-top: 4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (min-width: 480px) {
+      .details-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+      }
+      .invite-card {
+        box-shadow: none;
+        border-radius: 0;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="invite">
-    <!-- 👇 Replace this with your daughter's photo link -->
-    <img src="your-photo.jpg" alt="Birthday Girl" class="header-photo">
-
-    <div class="content">
-      <h1>Mall Mission: <span class="highlight">Blue Edition</span></h1>
-      <p class="subtitle">You’ve been chosen for a <strong>Top-Secret Birthday Adventure!</strong></p>
-
-      <div class="info-box">
-        📍 Meet at <strong>[Mall Name]</strong><br>
-        📅 <strong>[Day, Date]</strong> | ⏰ <strong>[Start Time]</strong>
+  <div class="invite-card">
+    <div class="top-row">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        OPERATION: MALL MISSION
       </div>
 
-      <div class="info-box">
-        🎯 Rendezvous Point: <strong>[Store or Food Court]</strong><br>
-        🚗 Pickup at <strong>[Time]</strong> from <strong>[Spot]</strong>
-      </div>
-
-      <p class="dresscode">
-        Dress Code: Blue, White, or Denim 💙<br>
-        Because only the coolest agents wear blue 😎
-      </p>
-
-      <div class="footer">
-        Confirm with a 💙 to HQ (Mom) at <strong>[Phone #]</strong><br><br>
-        <em>Secret agents. Snack breaks. Selfies allowed.</em><br>
-        <small>Authorized Birthday Squad Only ✨</small>
+      <!-- 👇 Replace src with a real URL to her photo -->
+      <div class="photo-frame">
+        <img src="your-photo.jpg" alt="Birthday Agent">
       </div>
     </div>
+
+    <h1>Mall Mission:<br><span>Blue Edition</span></h1>
+
+    <p class="subtitle">
+      You’ve been selected for a <strong>top-secret birthday mission 💙</strong>
+    </p>
+
+    <hr class="divider">
+
+    <p class="mission-copy">
+      Report to <strong>STONEBRIAR</strong> for snacks, selfies, and surprises.<br>
+      Join Agent <strong>VICTOYRIA</strong> as she celebrates turning <strong>13</strong> with a
+      scavenger-hunt adventure through the mall.
+    </p>
+
+    <div class="details-grid">
+      <div class="detail-box">
+        <div class="detail-label">Mission Date</div>
+        <div class="detail-value">[SUNDAY, NOV 16TH</div>
+      </div>
+      <div class="detail-box">
+        <div class="detail-label">Mission Time</div>
+        <div class="detail-value">[START TIME] – [END TIME]</div>
+      </div>
+      <div class="detail-box">
+        <div class="detail-label">Rendezvous Point</div>
+        <div class="detail-value">Meet at FOOD COURT</div>
+      </div>
+      <div class="detail-box">
+        <div class="detail-label">Extraction</div>
+        <div class="detail-value">Pickup at [PICKUP TIME] at [PICKUP SPOT]</div>
+      </div>
+    </div>
+
+    <p class="dresscode">
+      <strong>Dress Code:</strong> Blue, white, or denim — it’s part of the disguise. 🕵️‍♀️💙
+    </p>
+
+    <div class="bottom-row">
+      <div class="qr-box">
+        <!-- 👇 Replace with image of QR code that links to mission rules / group chat -->
+        <img src="qr-code.png" alt="Scan for Mission Rules">
+      </div>
+      <p class="qr-text">
+        Scan the code for your <strong>Mission Rules</strong>, scavenger list, and squad group chat.
+      </p>
+    </div>
+
+    <p class="rsvp">
+      Confirm your spot by sending a 💙 to HQ (aka Mom) at <strong>(945)237-9271</strong>.
+    </p>
+
+    <p class="footer-note">
+      This intel is classified. Authorized birthday squad members only.
+    </p>
   </div>
 </body>
 </html>
